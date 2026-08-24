@@ -5,7 +5,7 @@
   "source": {
     "name": "한국천주교주교회의 온라인 주소록",
     "url": "https://directory.cbck.or.kr/OnlineAddress/Default.aspx",
-    "checkedAt": null
+    "checkedAt": "2026-08-24T12:45:14Z"
   },
   "ordinaries": [
     {
@@ -13,105 +13,120 @@
       "ordinary": "옥현진 시몬",
       "title": "대주교",
       "statusLabel": "교구장",
-      "rememberOrdinary": true
+      "rememberOrdinary": true,
+      "sourceUrl": "https://directory.cbck.or.kr/OnlineAddress/Catholic/Diocese.aspx?cgubn=c&tbxSearch=&gyogu=201000026&char=all"
     },
     {
       "diocese": "대구대교구",
       "ordinary": "조환길 타대오",
       "title": "대주교",
       "statusLabel": "교구장",
-      "rememberOrdinary": true
+      "rememberOrdinary": true,
+      "sourceUrl": "https://directory.cbck.or.kr/OnlineAddress/Catholic/Diocese.aspx?cgubn=c&tbxSearch=&gyogu=201000021&char=all"
     },
     {
       "diocese": "대전교구",
       "ordinary": "김종수 아우구스티노",
       "title": "주교",
       "statusLabel": "교구장",
-      "rememberOrdinary": true
+      "rememberOrdinary": true,
+      "sourceUrl": "https://directory.cbck.or.kr/OnlineAddress/Catholic/Diocese.aspx?cgubn=c&tbxSearch=&gyogu=201000016&char=all"
     },
     {
       "diocese": "마산교구",
       "ordinary": "이성효 리노",
       "title": "주교",
       "statusLabel": "교구장",
-      "rememberOrdinary": true
+      "rememberOrdinary": true,
+      "sourceUrl": "https://directory.cbck.or.kr/OnlineAddress/Catholic/Diocese.aspx?cgubn=c&tbxSearch=&gyogu=201000024&char=all"
     },
     {
       "diocese": "부산교구",
       "ordinary": "손삼석 요셉",
       "title": "주교",
       "statusLabel": "교구장",
-      "rememberOrdinary": true
+      "rememberOrdinary": true,
+      "sourceUrl": "https://directory.cbck.or.kr/OnlineAddress/Catholic/Diocese.aspx?cgubn=c&tbxSearch=&gyogu=201000022&char=all"
     },
     {
       "diocese": "서울대교구",
       "ordinary": "정순택 베드로",
       "title": "대주교",
       "statusLabel": "교구장",
-      "rememberOrdinary": true
+      "rememberOrdinary": true,
+      "sourceUrl": "https://directory.cbck.or.kr/OnlineAddress/Catholic/Diocese.aspx?cgubn=c&tbxSearch=&gyogu=201000011&char=all"
     },
     {
       "diocese": "수원교구",
       "ordinary": "이용훈 마티아",
       "title": "주교",
       "statusLabel": "교구장",
-      "rememberOrdinary": true
+      "rememberOrdinary": true,
+      "sourceUrl": "https://directory.cbck.or.kr/OnlineAddress/Catholic/Diocese.aspx?cgubn=c&tbxSearch=&gyogu=201000018&char=all"
     },
     {
       "diocese": "안동교구",
       "ordinary": "권혁주 요한 크리소스토모",
       "title": "주교",
       "statusLabel": "교구장",
-      "rememberOrdinary": true
+      "rememberOrdinary": true,
+      "sourceUrl": "https://directory.cbck.or.kr/OnlineAddress/Catholic/Diocese.aspx?cgubn=c&tbxSearch=&gyogu=201000025&char=all"
     },
     {
       "diocese": "원주교구",
       "ordinary": "조규만 바실리오",
       "title": "주교",
       "statusLabel": "교구장",
-      "rememberOrdinary": true
+      "rememberOrdinary": true,
+      "sourceUrl": "https://directory.cbck.or.kr/OnlineAddress/Catholic/Diocese.aspx?cgubn=c&tbxSearch=&gyogu=201000019&char=all"
     },
     {
       "diocese": "의정부교구",
       "ordinary": "손희송 베네딕토",
       "title": "주교",
       "statusLabel": "교구장",
-      "rememberOrdinary": true
+      "rememberOrdinary": true,
+      "sourceUrl": "https://directory.cbck.or.kr/OnlineAddress/Catholic/Diocese.aspx?cgubn=c&tbxSearch=&gyogu=201000020&char=all"
     },
     {
       "diocese": "인천교구",
       "ordinary": "정신철 요한 세례자",
       "title": "주교",
       "statusLabel": "교구장",
-      "rememberOrdinary": true
+      "rememberOrdinary": true,
+      "sourceUrl": "https://directory.cbck.or.kr/OnlineAddress/Catholic/Diocese.aspx?cgubn=c&tbxSearch=&gyogu=201000017&char=all"
     },
     {
       "diocese": "전주교구",
       "ordinary": "김선태 사도 요한",
       "title": "주교",
       "statusLabel": "교구장",
-      "rememberOrdinary": true
+      "rememberOrdinary": true,
+      "sourceUrl": "https://directory.cbck.or.kr/OnlineAddress/Catholic/Diocese.aspx?cgubn=c&tbxSearch=&gyogu=201000027&char=all"
     },
     {
       "diocese": "제주교구",
       "ordinary": "문창우 비오",
       "title": "주교",
       "statusLabel": "교구장",
-      "rememberOrdinary": true
+      "rememberOrdinary": true,
+      "sourceUrl": "https://directory.cbck.or.kr/OnlineAddress/Catholic/Diocese.aspx?cgubn=c&tbxSearch=&gyogu=201000028&char=all"
     },
     {
       "diocese": "청주교구",
       "ordinary": "최광조 프란치스코",
       "title": "신부",
       "statusLabel": "교구장 직무대행",
-      "rememberOrdinary": false
+      "rememberOrdinary": false,
+      "sourceUrl": "https://directory.cbck.or.kr/OnlineAddress/Catholic/Diocese.aspx?cgubn=c&tbxSearch=&gyogu=201000023&char=all"
     },
     {
       "diocese": "춘천교구",
       "ordinary": "김주영 시몬",
       "title": "주교",
       "statusLabel": "교구장",
-      "rememberOrdinary": true
+      "rememberOrdinary": true,
+      "sourceUrl": "https://directory.cbck.or.kr/OnlineAddress/Catholic/Diocese.aspx?cgubn=c&tbxSearch=&gyogu=201000013&char=all"
     }
   ]
 }
