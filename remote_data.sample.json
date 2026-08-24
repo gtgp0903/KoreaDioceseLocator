@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "boundaryVersion": 1,
+  "dataUpdatedAt": "2026-08-24",
+  "ordinaries": [
+    {
+      "diocese": "서울대교구",
+      "ordinary": "정순택 베드로",
+      "title": "대주교",
+      "statusLabel": "교구장",
+      "rememberOrdinary": true
+    },
+    {
+      "diocese": "청주교구",
+      "ordinary": "최광조 프란치스코",
+      "title": "신부",
+      "statusLabel": "교구장 직무대행",
+      "rememberOrdinary": false
+    }
+  ]
+}

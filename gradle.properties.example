@@ -1,0 +1,3 @@
+# Copy this line to your local/user Gradle properties or repository gradle.properties
+# after replacing OWNER and REPO with the public GitHub repository.
+KDL_REMOTE_DATA_URL=https://raw.githubusercontent.com/OWNER/REPO/main/data/remote_data.json
