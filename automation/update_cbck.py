@@ -27,6 +27,23 @@ from typing import Iterable
 BASE = "https://directory.cbck.or.kr"
 INDEX_URL = f"{BASE}/OnlineAddress/Default.aspx"
 EXPECTED_DIOCESES = 15
+TERRITORIAL_DIOCESES = {
+    "서울대교구",
+    "춘천교구",
+    "대전교구",
+    "인천교구",
+    "수원교구",
+    "원주교구",
+    "의정부교구",
+    "대구대교구",
+    "부산교구",
+    "청주교구",
+    "마산교구",
+    "안동교구",
+    "광주대교구",
+    "전주교구",
+    "제주교구",
+}
 USER_AGENT = "KoreaDioceseLocator/1.0 (+CBCK directory updater)"
 
 
@@ -65,30 +82,77 @@ def html_to_text(html: str) -> str:
 
 
 def discover_diocese_urls(index_html: str) -> list[tuple[str, str]]:
-    # The directory uses Diocese.aspx?...&gyogu=<id>. Keep the visible Korean name.
+    """
+    CBCK 온라인 주소록에서 대한민국의 15개 지역교구만 찾는다.
+
+    군종교구 및 북한 지역 등 다른 교회 관할이 목록에 추가되더라도
+    GPS 기반 지역 판정 대상에는 포함하지 않는다.
+    """
     pattern = re.compile(
         r'href=["\'](?P<href>[^"\']*Catholic/Diocese\.aspx\?[^"\']*gyogu=\d+[^"\']*)["\'][^>]*>(?P<label>.*?)</a>',
         re.I | re.S,
     )
+
     found: dict[str, str] = {}
+
     for m in pattern.finditer(index_html):
         label = html_to_text(m.group("label")).strip(' "')
-        if not (label.endswith("교구") or label.endswith("대교구")):
+
+        # 대한민국 GPS 판정 대상인 15개 지역교구만 허용한다.
+        if label not in TERRITORIAL_DIOCESES:
             continue
-        if label == "군종교구":
-            continue
+
         href = unescape(m.group("href"))
         url = urllib.parse.urljoin(BASE + "/OnlineAddress/", href)
         found[label] = url
 
-    # Some ASP.NET pages render links with different relative casing/path. Fallback by URL + nearby text.
+    # ASP.NET 페이지 구조나 상대경로 표기가 달라진 경우를 위한 fallback.
     if len(found) < EXPECTED_DIOCESES:
-        for m in re.finditer(r'href=["\'](?P<href>[^"\']*Diocese\.aspx\?[^"\']*gyogu=\d+[^"\']*)["\']', index_html, re.I):
+        for m in re.finditer(
+            r'href=["\'](?P<href>[^"\']*Diocese\.aspx\?[^"\']*gyogu=\d+[^"\']*)["\']',
+            index_html,
+            re.I,
+        ):
             href = unescape(m.group("href"))
-            window = index_html[max(0, m.start()-100):min(len(index_html), m.end()+150)]
-            label_match = re.search(r'(서울대교구|춘천교구|대전교구|인천교구|수원교구|원주교구|의정부교구|대구대교구|부산교구|청주교구|마산교구|안동교구|광주대교구|전주교구|제주교구)', html_to_text(window))
-            if label_match:
-                found[label_match.group(1)] = urllib.parse.urljoin(BASE + "/OnlineAddress/", href)
+
+            window = index_html[
+                max(0, m.start() - 150):
+                min(len(index_html), m.end() + 200)
+            ]
+
+            window_text = html_to_text(window)
+
+            for diocese_name in TERRITORIAL_DIOCESES:
+                if diocese_name in window_text:
+                    found[diocese_name] = urllib.parse.urljoin(
+                        BASE + "/OnlineAddress/",
+                        href,
+                    )
+                    break
+
+    missing = TERRITORIAL_DIOCESES - set(found)
+
+    if missing:
+        raise ValueError(
+            "CBCK index discovery failed. Missing territorial dioceses: "
+            + ", ".join(sorted(missing))
+        )
+
+    # 예상하지 못한 교구가 섞이지 않았는지 한 번 더 방어적으로 확인한다.
+    unexpected = set(found) - TERRITORIAL_DIOCESES
+
+    if unexpected:
+        raise ValueError(
+            "Unexpected dioceses detected: "
+            + ", ".join(sorted(unexpected))
+        )
+
+    if len(found) != EXPECTED_DIOCESES:
+        raise ValueError(
+            f"CBCK territorial diocese validation failed: "
+            f"expected {EXPECTED_DIOCESES}, got {len(found)}"
+        )
+
     return sorted(found.items())
 
 
@@ -281,8 +345,6 @@ def main() -> int:
         else:
             index_html = fetch(INDEX_URL)
             discovered = discover_diocese_urls(index_html)
-            if len(discovered) != EXPECTED_DIOCESES:
-                raise ValueError(f"CBCK index discovery failed: expected {EXPECTED_DIOCESES}, got {len(discovered)}")
             records = [parse_diocese_page(name, url, fetch(url)) for name, url in discovered]
 
         validate(records)
