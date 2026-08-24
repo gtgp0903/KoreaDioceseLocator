@@ -1,0 +1,46 @@
+name: Update CBCK diocese data
+
+on:
+  schedule:
+    # 03:17 UTC = 12:17 KST
+    # 정각 부근의 GitHub Actions 혼잡을 피하기 위해 17분으로 설정
+    - cron: '17 3 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-cbck-data
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Read CBCK and validate all territorial dioceses
+        run: python automation/update_cbck.py
+
+      - name: Commit verified changes only
+        shell: bash
+        run: |
+          if git diff --quiet -- data/remote_data.json data/boundaries_snapshot.json; then
+            echo "No verified data changes."
+            exit 0
+          fi
+
+          git config user.name "kdl-cbck-bot"
+          git config user.email "actions@users.noreply.github.com"
+
+          git add data/remote_data.json data/boundaries_snapshot.json
+          git commit -m "chore: update CBCK diocese data"
+          git push
