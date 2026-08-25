@@ -12,7 +12,7 @@ import java.net.URL
 object RemoteDataManager {
     const val CURRENT_BOUNDARY_VERSION = 1
 
-    // 실제 배포 전에 GitHub Pages/Raw, Firebase Hosting 등 HTTPS 공개 URL로 교체하세요.
+    // 기본값은 이 프로젝트의 공개 GitHub Raw 데이터입니다. 필요하면 Gradle 속성으로 덮어쓸 수 있습니다.
     val REMOTE_DATA_URL: String = BuildConfig.REMOTE_DATA_URL
 
     private const val PREFS = "remote_diocese_data"

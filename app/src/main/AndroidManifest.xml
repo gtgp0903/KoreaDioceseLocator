@@ -6,7 +6,7 @@
 
     <application
         android:allowBackup="true"
-        android:label="이곳 교구"
+        android:label="성 크리스토퍼"
         android:theme="@style/Theme.DioceseLocator">
         <activity
             android:name=".MainActivity"

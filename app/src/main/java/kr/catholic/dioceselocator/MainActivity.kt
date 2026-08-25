@@ -110,7 +110,7 @@ class MainActivity : ComponentActivity() {
             modifier = modifier.fillMaxSize().padding(24.dp),
             verticalArrangement = Arrangement.spacedBy(20.dp)
         ) {
-            Text("이곳 교구", style = MaterialTheme.typography.headlineLarge, fontWeight = FontWeight.Bold)
+            Text("성 크리스토퍼", style = MaterialTheme.typography.headlineLarge, fontWeight = FontWeight.Bold)
             Text("현재 위치의 천주교 관할 교구와 교구장을 확인합니다.")
 
             Button(onClick = ::requestLocation, modifier = Modifier.fillMaxWidth().height(52.dp)) {
@@ -213,7 +213,7 @@ class MainActivity : ComponentActivity() {
             }
         }
         Text(
-            "교구장 자료 기준: 한국천주교주교회의 온라인 주소록, 2026-08 확인.",
+            "교구장 자료 기준: 한국천주교주교회의 온라인 주소록 · 앱 실행 시 자동 확인",
             style = MaterialTheme.typography.bodySmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant
         )
